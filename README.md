@@ -1,2 +1,2 @@
 # java-practicing
-BIG HUI
+Notes and practicing in a process of java learning
