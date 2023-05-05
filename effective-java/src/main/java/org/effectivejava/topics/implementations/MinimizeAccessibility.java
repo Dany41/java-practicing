@@ -41,11 +41,8 @@ public class MinimizeAccessibility implements Item {
                         "With getter you can have at least some control. So, classes with public mutable fields are not thread safe",
                 "Nonzero-length array is always mutable",
                 "It is wrong for a class to have a public static final array field, or an accessor that returns such a field",
-                "",
-                "",
-                "",
-                "",
-                ""
+                "From Java 9 modules were added. Module is a grouping of packages. It can explicitly export the package",
+                "Summary: reduce accessibility of program elements as much as possible (within reason)"
         );
     }
 
