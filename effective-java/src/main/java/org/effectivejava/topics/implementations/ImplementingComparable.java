@@ -6,6 +6,8 @@ import org.effectivejava.topics.helpers.Chapter;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Comparator.comparingInt;
 import static org.effectivejava.topics.helpers.ItemUtils.measurePerformance;
@@ -67,7 +69,8 @@ public class ImplementingComparable implements Item {
                         "but it decreases the performance of a program",
                 "Comparator have lots of static methods, for example comparingInt, thenComparingInt, etc for long and double primitive types\n" +
                         "also 2 overloading for comparing and three for themComparing methods",
-                "Whenever you create value class that has a sensible ordering, you should implement Comparable"
+                "Whenever you create value class that has a sensible ordering, you should implement Comparable",
+                "Stream elements that don't implement Comparable, but must be sorted can cause an error"
         );
     }
 
@@ -112,6 +115,19 @@ public class ImplementingComparable implements Item {
             }
         });
 
+
+        System.out.println();
+        System.out.println();
+
+        try {
+            Stream.of(new Person("Sasha", 12), new Person("Anton", 99))
+                    .sorted()
+                    .collect(Collectors.toCollection(TreeSet::new))
+                    .forEach(System.out::println);
+        } catch (Exception e) {
+            System.out.println("Exception while sorting Persons: " + e.getMessage());
+        }
+
     }
 
     public record Person(String name, int age) {}
@@ -119,7 +135,7 @@ public class ImplementingComparable implements Item {
         ONE, TWO, THREE, FOUR
     }
 
-    public static class PhoneNumber {
+    public static class PhoneNumber implements Comparable<PhoneNumber> {
 
         private final short areaCode, prefix, lineNum;
         public PhoneNumber(int areaCode, int prefix, int lineNum) {
