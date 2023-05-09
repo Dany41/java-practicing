@@ -1,10 +1,12 @@
 package org.effectivejava.topics.implementations;
 
+import com.google.auto.service.AutoService;
 import org.effectivejava.topics.abstractions.Item;
 import org.effectivejava.topics.helpers.Chapter;
 
 import java.util.List;
 
+@AutoService({Item.class})
 public class PublicClassesPreferAccessorMethods2Fields implements Item {
     @Override
     public Chapter getChapter() {
