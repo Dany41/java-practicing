@@ -70,7 +70,7 @@ public class ImplementingComparable implements Item {
                 "Comparator have lots of static methods, for example comparingInt, thenComparingInt, etc for long and double primitive types\n" +
                         "also 2 overloading for comparing and three for themComparing methods",
                 "Whenever you create value class that has a sensible ordering, you should implement Comparable",
-                "Stream elements that don't implement Comparable, but must be sorted can cause an error"
+                "Stream elements that don't implement Comparable, but must be sorted, can cause an error"
         );
     }
 
@@ -104,14 +104,14 @@ public class ImplementingComparable implements Item {
         System.out.println();
         measurePerformance("Measuring performance without Comparator", () -> {
             for (int i = 0; i < 100_000_000; i++) {
-                new PhoneNumber(i, i + 1, i + 2).compareTo(new PhoneNumber(i, i + 1, i + 3));
+                new PhoneNumber(i + 1, i + 1, i + 2).compareTo(new PhoneNumber(i, i + 1, i + 3));
             }
         });
 
         System.out.println();
         measurePerformance("Measuring performance with Comparator", () -> {
             for (int i = 0; i < 100_000_000; i++) {
-                new PhoneNumber(i, i + 1, i + 2).compareTo2(new PhoneNumber(i, i + 1, i + 3));
+                new PhoneNumber(i + 1, i + 1, i + 2).compareTo2(new PhoneNumber(i, i + 1, i + 3));
             }
         });
 
@@ -138,6 +138,7 @@ public class ImplementingComparable implements Item {
     public static class PhoneNumber implements Comparable<PhoneNumber> {
 
         private final short areaCode, prefix, lineNum;
+        private Object a;
         public PhoneNumber(int areaCode, int prefix, int lineNum) {
             this.areaCode = rangeCheck(areaCode, 999999999, "area code");
             this.prefix = rangeCheck(prefix, 999999999, "prefix");
