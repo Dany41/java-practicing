@@ -5,8 +5,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class MoneyTest {
+
+    private final String VALID_CURRENCY = "USD";
 
     @ParameterizedTest
     @CsvSource({
@@ -19,6 +22,12 @@ public class MoneyTest {
 
         assertThat(money.getAmount()).isEqualTo(amount);
         assertThat(money.getCurrency()).isEqualTo(currency);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, -3451, -10000})
+    void constructorShouldThrowIAEForInvalidAmount(int invalidAmount) {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new Money(invalidAmount, VALID_CURRENCY));
     }
 
 }
