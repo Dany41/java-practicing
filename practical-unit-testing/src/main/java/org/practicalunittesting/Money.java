@@ -8,6 +8,8 @@ public class Money {
     private final String currency;
 
     public Money(int amount, String currency) {
+        if (currency == null || currency.length() < 2)
+            throw new IllegalArgumentException("Illegal amount: [" + currency + "]");
         if (amount < 0)
             throw new IllegalArgumentException("Illegal amount: [" + amount + "]");
         this.amount = amount;
