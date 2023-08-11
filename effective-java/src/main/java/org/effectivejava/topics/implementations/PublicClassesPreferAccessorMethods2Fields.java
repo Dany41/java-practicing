@@ -5,6 +5,9 @@ import org.effectivejava.topics.abstractions.Item;
 import org.effectivejava.topics.helpers.Chapter;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @AutoService({Item.class})
 public class PublicClassesPreferAccessorMethods2Fields implements Item {
@@ -28,6 +31,7 @@ public class PublicClassesPreferAccessorMethods2Fields implements Item {
                 "Create getter and setters (if needed) and make the fields private if needed. Only if class is exposed to the client. " +
                     "Sometimes there is no need in this if it is private or for the external usage",
                 "Bad examples in Java standard library: java.awt.Dimension and java.awt.Point",
+                // todo
                 "Accessor methods for final fields are also questionable, see last ex in an Item for example of invariants"
         );
     }

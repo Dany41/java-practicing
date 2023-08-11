@@ -60,7 +60,7 @@ public class MinimizeMutability implements Item {
     @Override
     public void runExamples() {
         System.out.println("integerEquals(200, 300) = " + integerEquals(200, 300));
-        System.out.println("integerEquals(200, 300) = " + integerEquals(200, 200));
+        System.out.println("integerEquals(200, 200) = " + integerEquals(200, 200));
         System.out.println("integerEquals(10, 10) = " + integerEquals(10, 10));
     }
 
