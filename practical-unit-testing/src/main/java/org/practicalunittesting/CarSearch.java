@@ -1,8 +1,8 @@
 package org.practicalunittesting;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarSearch {
 
@@ -11,15 +11,13 @@ public class CarSearch {
         cars.add(car);
     }
     public List<Car> findSportCars() {
-        List<Car> sportCars = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getEngine().getNbOfCylinders() > 6
-                    && Color.RED == car.getColor()
-                    && "Ferrari".equals(car.getManufacturer().getName())) {
-                sportCars.add(car);
-            }
-        }
-        return sportCars;
+        return cars.stream()
+                .filter(Car::isSportCar)
+                .collect(Collectors.toList());
+    }
+
+    public void method() {
+
     }
 
 }

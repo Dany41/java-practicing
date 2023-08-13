@@ -1,7 +1,5 @@
 package org.practicalunittesting;
 
-import java.util.Objects;
-
 public class Money {
 
     private final int amount;
