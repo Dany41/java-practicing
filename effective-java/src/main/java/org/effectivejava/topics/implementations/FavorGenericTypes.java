@@ -21,17 +21,10 @@ public class FavorGenericTypes implements Item {
     @Override
     public List<String> getBulletPoints() {
         return List.of(
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
+                "generic types are safer and easier yo use than type that require casts in client code",
+                "when you design new types, make sure that they can be used without such casts",
+                "if you have any existing types that should be generic but aren't, generify them, it is safe as it is " +
+                        "compatible"
         );
     }
 
@@ -40,8 +33,4 @@ public class FavorGenericTypes implements Item {
 
     }
 
-    @Override
-    public List<Class<?>> examplesInCode() {
-        return Item.super.examplesInCode();
-    }
 }
