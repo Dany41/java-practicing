@@ -4,6 +4,7 @@ import com.google.auto.service.AutoService;
 import org.effectivejava.topics.abstractions.Item;
 import org.effectivejava.topics.helpers.Chapter;
 
+import java.lang.reflect.AnnotatedElement;
 import java.util.*;
 
 @AutoService(Item.class)
@@ -54,7 +55,8 @@ public class ConsiderTypesafeHeterogeneousContainers implements Item {
     @Override
     public List<Class<?>> examplesInCode() {
         return List.of(
-                Collections.class // checkedList, checkedSet, checkedMap
+                Collections.class, // checkedList, checkedSet, checkedMap
+                AnnotatedElement.class // typesafe heterogeneous container
         );
     }
 
