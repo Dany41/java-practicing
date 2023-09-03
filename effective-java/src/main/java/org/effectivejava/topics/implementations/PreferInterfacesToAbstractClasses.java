@@ -39,7 +39,7 @@ public class PreferInterfacesToAbstractClasses implements Item {
                 "Static method with AbstractList below is an example of Adapter pattern that allows an int array to be " +
                         "viewed as a list of Integer instances",
                 "AbstractMapEntry is one more example below. Note that implementations could not be implemented in " +
-                        "interfaces (you can't implement Object's methods in interfaces, defaule methods are not " +
+                        "interfaces (you can't implement Object's methods in interfaces, default methods are not " +
                         "permitted to override Object's methods)",
                 "As skeletal implementations are created to be extended - all the rules from the previous Item about " +
                         "the documenting is applied here"
