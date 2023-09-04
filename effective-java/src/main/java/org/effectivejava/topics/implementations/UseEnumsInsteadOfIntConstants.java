@@ -5,6 +5,11 @@ import org.effectivejava.topics.abstractions.Item;
 import org.effectivejava.topics.helpers.Chapter;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toMap;
 
 @AutoService(Item.class)
 public class UseEnumsInsteadOfIntConstants implements Item {
@@ -38,7 +43,18 @@ public class UseEnumsInsteadOfIntConstants implements Item {
                         "to recompile",
                 "methods that switches on enum values are anti-pattern if they located in the enum (see example in\n" +
                         "Operation below); the better use showed in BetterOperation",
-                ""
+                "if you override toString method -> consider writing method fromString() to return Enum value from a\n" +
+                        "given string (example see in EvenBetterOperation)",
+                """
+                enum constructors are not permitted to access the enum's static fields, with the exception of constant
+                variables; it is needed because static fields have not yet been initialized when enum
+                constructors run; the special case for this restriction is that enum constants cannot access one another
+                from their constructors""",
+                "look at PayrollDay and try to refactor it in order to force developer to provide logic when new\n" +
+                        "constant is added",
+                "use enums any time you need a set of constants whose members are known at compile time",
+                "it is not necessary that the set of constants in an enum type stay fixed for all time; the enum feature\n" +
+                        "was designed to allow for binary compatible evolution of enum types"
         );
     }
 
@@ -49,6 +65,12 @@ public class UseEnumsInsteadOfIntConstants implements Item {
         for (Planet p : Planet.values())
             System.out.printf("Weight on %s is %f%n",
                     p, p.surfaceWeight(mass));
+
+        double x = Double.parseDouble("10");
+        double y = Double.parseDouble("12");
+        for (EvenBetterOperation op : EvenBetterOperation.values())
+            System.out.printf("%f %s %f = %f%n",
+                    x, op, y, op.apply(x, y));
     }
 
     @Override
@@ -118,5 +140,84 @@ public class UseEnumsInsteadOfIntConstants implements Item {
         TIMES {public double apply(double x, double y){return x * y;}},
         DIVIDE{public double apply(double x, double y){return x / y;}};
         public abstract double apply(double x, double y);
+    }
+
+    // Enum type with constant-specific class bodies and data
+    public enum EvenBetterOperation {
+        PLUS("+") {
+            public double apply(double x, double y) { return x + y; }
+        },
+        MINUS("-") {
+            public double apply(double x, double y) { return x - y; }
+        },
+        TIMES("*") {
+            public double apply(double x, double y) { return x * y; }
+        },
+        DIVIDE("/") {
+            public double apply(double x, double y) { return x / y; }
+        };
+        private final String symbol;
+        EvenBetterOperation(String symbol) { this.symbol = symbol; }
+        @Override public String toString() { return symbol; }
+        public abstract double apply(double x, double y);
+
+        // Implementing a fromString method on an enum type
+        private static final Map<String, EvenBetterOperation> stringToEnum =
+                Stream.of(values()).collect(
+                        toMap(Object::toString, e -> e));
+        // Returns Operation for string, if any
+        public static Optional<EvenBetterOperation> fromString(String symbol) {
+            return Optional.ofNullable(stringToEnum.get(symbol));
+        }
+    }
+
+    // Enum that switches on its value to share code - questionable
+    enum PayrollDay {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY,
+        SATURDAY, SUNDAY;
+        private static final int MINS_PER_SHIFT = 8 * 60;
+        int pay(int minutesWorked, int payRate) {
+            int basePay = minutesWorked * payRate;
+            int overtimePay = switch (this) {
+                case SATURDAY, SUNDAY -> // Weekend
+                        basePay / 2;
+                default -> // Weekday
+                        minutesWorked <= MINS_PER_SHIFT ?
+                                0 : (minutesWorked - MINS_PER_SHIFT) * payRate / 2;
+            };
+            return basePay + overtimePay;
+        }
+    }
+
+    // The strategy enum pattern
+    enum StrategyPayrollDay {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY,
+        SATURDAY(PayType.WEEKEND), SUNDAY(PayType.WEEKEND);
+        private final PayType payType;
+        StrategyPayrollDay(PayType payType) { this.payType = payType; }
+        StrategyPayrollDay() { this(PayType.WEEKDAY); } // Default
+        int pay(int minutesWorked, int payRate) {
+            return payType.pay(minutesWorked, payRate);
+        }
+        // The strategy enum type
+        private enum PayType {
+            WEEKDAY {
+                int overtimePay(int minsWorked, int payRate) {
+                    return minsWorked <= MINS_PER_SHIFT ? 0 :
+                            (minsWorked - MINS_PER_SHIFT) * payRate / 2;
+                }
+            },
+            WEEKEND {
+                int overtimePay(int minsWorked, int payRate) {
+                    return minsWorked * payRate / 2;
+                }
+            };
+            abstract int overtimePay(int mins, int payRate);
+            private static final int MINS_PER_SHIFT = 8 * 60;
+            int pay(int minsWorked, int payRate) {
+                int basePay = minsWorked * payRate;
+                return basePay + overtimePay(minsWorked, payRate);
+            }
+        }
     }
 }
