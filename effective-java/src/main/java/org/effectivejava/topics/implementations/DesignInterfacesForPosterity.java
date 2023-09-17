@@ -22,10 +22,11 @@ public class DesignInterfacesForPosterity implements Item {
     @Override
     public List<String> getBulletPoints() {
         return List.of(
-                "It is about creating interfaces for ages. For example in Java 8 there default methods were provided. " +
-                        "So they were added to old interfaces, for example - Collection. The default implementation " +
-                        "cannot fit for all of the existing implementations, and it was a bit problem. The origin reasons " +
-                        "for default methods - were lambdas and streams",
+                """
+                        It is about creating interfaces for ages. For example in Java 8 there default methods were provided.
+                        So they were added to old interfaces, for example - Collection. The default implementation
+                        cannot fit for all of the existing implementations, and it was a bit problem. The origin reasons
+                        for default methods - were lambdas and streams""",
                 "In the presence of default methods, existing implementation of an interface may compile without errors " +
                         "or warning but fail at runtime"
         );

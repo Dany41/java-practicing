@@ -24,10 +24,11 @@ public class PublicClassesPreferAccessorMethods2Fields implements Item {
     @Override
     public List<String> getBulletPoints() {
         return List.of(
-                "Degenerate Public class below is bad, because: it doesn't offer the benefits of encapsulation:" +
-                    "you can't change the representation without changing the API" +
-                    "you can't take auxiliary action in case of accessing the field" +
-                    "you can't enforce invariants",
+                """
+                    Degenerate Public class below is bad, because: it doesn't offer the benefits of encapsulation:" +
+                        you can't change the representation without changing the API
+                        you can't take auxiliary action in case of accessing the field
+                        you can't enforce invariants""",
                 "Create getter and setters (if needed) and make the fields private if needed. Only if class is exposed to the client. " +
                     "Sometimes there is no need in this if it is private or for the external usage",
                 "Bad examples in Java standard library: java.awt.Dimension and java.awt.Point",
