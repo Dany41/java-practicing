@@ -65,22 +65,22 @@ public class AvoidExcessiveSynchronization implements Item {
 //        });
 
         // Observer that uses a background thread needlessly
-        set.addObserver(new SetObserver<>() {
-            public void added(ObservableSet<Integer> s, Integer e) {
-                System.out.println(e);
-                if (e == 23) {
-                    ExecutorService exec =
-                            Executors.newSingleThreadExecutor();
-                    try {
-                        exec.submit(() -> s.removeObserver(this)).get();
-                    } catch (ExecutionException | InterruptedException ex) {
-                        throw new AssertionError(ex);
-                    } finally {
-                        exec.shutdown();
-                    }
-                }
-            }
-        });
+//        set.addObserver(new SetObserver<>() {
+//            public void added(ObservableSet<Integer> s, Integer e) {
+//                System.out.println(e);
+//                if (e == 23) {
+//                    ExecutorService exec =
+//                            Executors.newSingleThreadExecutor();
+//                    try {
+//                        exec.submit(() -> s.removeObserver(this)).get();
+//                    } catch (ExecutionException | InterruptedException ex) {
+//                        throw new AssertionError(ex);
+//                    } finally {
+//                        exec.shutdown();
+//                    }
+//                }
+//            }
+//        });
 
         for (int i = 0; i < 100; i++)
             set.add(i);
