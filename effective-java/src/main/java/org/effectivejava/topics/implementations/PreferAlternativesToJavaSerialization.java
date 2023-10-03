@@ -10,7 +10,7 @@ import java.util.List;
 public class PreferAlternativesToJavaSerialization implements Item {
     @Override
     public Chapter getChapter() {
-        return Chapter.CHAPTER_11;
+        return Chapter.CHAPTER_12;
     }
 
     @Override
