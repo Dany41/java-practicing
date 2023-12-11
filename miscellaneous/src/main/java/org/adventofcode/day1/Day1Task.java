@@ -2,13 +2,12 @@ package org.adventofcode.day1;
 
 import one.util.streamex.EntryStream;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class Task {
+import static org.adventofcode.Utils.getInput;
+
+public class Day1Task {
 
     private static Map<String, Integer> validObjects = new HashMap<>();
 
@@ -34,7 +33,7 @@ public class Task {
     }
 
     public static void main(String[] args) {
-        String[] input = getInput("C:\\Users\\Даня\\IdeaProjects\\java-practicing\\miscellaneous\\src\\main\\java\\org\\adventofcode\\day1\\data.txt");
+        String[] input = getInput("day1_data.txt");
 
         int result1 = part1(input);
         int result2 = part2(input);
@@ -67,14 +66,5 @@ public class Task {
             result += firstDigit * 10 + lastDigit;
         }
         return result;
-    }
-
-    private static String[] getInput(String s) {
-        try {
-            return new String(Files.readAllBytes(Paths.get(s))).split("\r\n");
-        } catch (IOException e) {
-            System.out.println("Couldn't read file by path: " + s);
-            return new String[]{};
-        }
     }
 }
