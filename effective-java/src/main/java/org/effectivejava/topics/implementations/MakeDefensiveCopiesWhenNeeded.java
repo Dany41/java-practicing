@@ -36,7 +36,7 @@ public class MakeDefensiveCopiesWhenNeeded implements Item {
                         to the parameters from another thread during the window of vulnerability between the time the
                         parameters are checked and time they are copied. In the computer security community, this is
                         knows as a time-of-check/time-of-use or TOCTOU attack""",
-                "clone() is used, because it can return the subclass of Date which is untrusted",
+                "clone() is restricted to use, because it can return the subclass of Date which is untrusted",
                 "to prevent this sort of attack, do not use the clone method to make a defensive copy of a parameter " +
                         "whose type is subclassable by untrusted parties",
                 "but it is still can be attacked, see the second attack below",
@@ -83,6 +83,15 @@ public class MakeDefensiveCopiesWhenNeeded implements Item {
             this.start = start;
             this.end = end;
         }
+        public Date start() {
+            return start;
+        }
+
+        public Date end() {
+            return end;
+        }
+
+
 
         // Repaired constructor - makes defensive copies of parameters
 //        public Period(Date start, Date end) {
@@ -92,13 +101,6 @@ public class MakeDefensiveCopiesWhenNeeded implements Item {
 //                throw new IllegalArgumentException(
 //                        this.start + " after " + this.end);
 //        }
-        public Date start() {
-            return start;
-        }
-
-        public Date end() {
-            return end;
-        }
 
         // Repaired accessors - make defensive copies of internal fields
 //        public Date start() {
