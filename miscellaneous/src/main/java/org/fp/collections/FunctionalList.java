@@ -14,6 +14,8 @@ public sealed interface FunctionalList<T> permits Nil, Cons {
 
     boolean isEmpty();
 
+    int length();
+
     <R> FunctionalList<R> map(Function<T, R> fun);
 
     FunctionalList<T> filter(Predicate<T> fun);

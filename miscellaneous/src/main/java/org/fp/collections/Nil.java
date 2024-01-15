@@ -18,6 +18,11 @@ public final class Nil implements FunctionalList {
     }
 
     @Override
+    public int length() {
+        return 0;
+    }
+
+    @Override
     public FunctionalList filter(Predicate fun) {
         return this;
     }

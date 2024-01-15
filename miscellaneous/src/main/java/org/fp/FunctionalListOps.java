@@ -51,4 +51,11 @@ public class FunctionalListOps {
             return foldLeft(doubles, 1.0, (e, a) -> e * a);
     }
 
+    public static <T> int length(FunctionalList<T> list) {
+        return switch (list) {
+            case Cons<T>(var head, var tail) -> 1 + FunctionalListOps.length(tail);
+            case Nil nil -> 0;
+        };
+    }
+
 }

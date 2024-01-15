@@ -12,6 +12,11 @@ public record Cons<T>(T head, FunctionalList<T> tail) implements FunctionalList<
     }
 
     @Override
+    public int length() {
+        return 1 + tail.length();
+    }
+
+    @Override
     public <R> FunctionalList<R> map(Function<T, R> fun) {
         return this.flatMap(e -> new Cons<>(fun.apply(e), Nil.getInstance()));
     }
