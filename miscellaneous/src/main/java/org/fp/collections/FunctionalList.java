@@ -1,6 +1,7 @@
 package org.fp.collections;
 
 import java.util.Arrays;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -21,5 +22,9 @@ public sealed interface FunctionalList<T> permits Nil, Cons {
     FunctionalList<T> filter(Predicate<T> fun);
 
     <R> FunctionalList<R> flatMap(Function<T, FunctionalList<R>> fun);
+
+    void forEach(Consumer<T> action);
+
+    boolean contains(T elem);
 
 }

@@ -2,6 +2,7 @@ package org.fp.collections;
 
 import lombok.Getter;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -25,6 +26,14 @@ public final class Nil implements FunctionalList {
     @Override
     public FunctionalList filter(Predicate fun) {
         return this;
+    }
+
+    @Override
+    public void forEach(Consumer action) { }
+
+    @Override
+    public boolean contains(Object elem) {
+        return false;
     }
 
     @Override

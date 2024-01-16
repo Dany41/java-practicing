@@ -18,4 +18,9 @@ public class FunctionalListAssertion<T> extends AbstractAssert<FunctionalListAss
         return this;
     }
 
+    public FunctionalListAssertion<T> contains(T elem) {
+        Assertions.assertThat(this.actual.contains(elem)).isTrue();
+        return this;
+    }
+
 }
