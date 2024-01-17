@@ -27,4 +27,6 @@ public sealed interface FunctionalList<T> permits Nil, Cons {
 
     boolean contains(T elem);
 
+    boolean containsAll(FunctionalList<T> anotherList);
+
 }

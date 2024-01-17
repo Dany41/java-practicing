@@ -42,4 +42,12 @@ public record Cons<T>(T head, FunctionalList<T> tail) implements FunctionalList<
     public boolean contains(T elem) {
         return elem.equals(head) || tail.contains(elem);
     }
+
+    @Override
+    public boolean containsAll(FunctionalList<T> anotherList) {
+        return switch(anotherList) {
+            case Cons<T>(T anotherHead, FunctionalList<T> anotherTail) -> contains(anotherHead) && this.tail.containsAll(anotherList);
+            case Nil nil -> true;
+        };
+    }
 }

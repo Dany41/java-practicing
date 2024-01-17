@@ -37,6 +37,11 @@ public final class Nil implements FunctionalList {
     }
 
     @Override
+    public boolean containsAll(FunctionalList anotherList) {
+        return false;
+    }
+
+    @Override
     public FunctionalList flatMap(Function fun) {
         return this;
     }
