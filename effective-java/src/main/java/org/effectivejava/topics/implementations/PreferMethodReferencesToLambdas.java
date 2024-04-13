@@ -1,22 +1,22 @@
 package org.effectivejava.topics.implementations;
 
 import com.google.auto.service.AutoService;
-import com.google.common.base.Function;
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 @AutoService(Item.class)
 public class PreferMethodReferencesToLambdas implements Item {
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_7;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_7;
     }
 
     @Override
@@ -28,8 +28,11 @@ public class PreferMethodReferencesToLambdas implements Item {
     public List<String> getBulletPoints() {
         return List.of(
                 "method references are even shorter than lambdas",
-                "There is nothing you can do with a method reference that you can't also do with a lambda (with " +
-                        "one exception - JLS, 9.9-2)",
+                """
+                        There is nothing you can do with a method reference that you can't also do with a lambda (with
+                        one exception - JLS, 9.9-2)
+                        For example if method has signature <F extends Exception> ()->String throws F
+                        """,
                 """
                         There are 5 method reference types:
                             Static

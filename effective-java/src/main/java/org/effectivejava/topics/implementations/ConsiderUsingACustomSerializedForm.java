@@ -2,8 +2,8 @@ package org.effectivejava.topics.implementations;
 
 import com.google.auto.service.AutoService;
 import lombok.RequiredArgsConstructor;
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -14,8 +14,8 @@ import java.util.List;
 @AutoService(Item.class)
 public class ConsiderUsingACustomSerializedForm implements Item {
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_12;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_12;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ConsiderUsingACustomSerializedForm implements Item {
     }
 
     // StringList with a reasonable custom serialized form
-    public final static class StringList implements Serializable {
+    public static class StringList implements Serializable {
         private transient int size = 0;
         private transient Entry head = null;
         // No longer Serializable!

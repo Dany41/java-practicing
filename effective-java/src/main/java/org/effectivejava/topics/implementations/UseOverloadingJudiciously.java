@@ -1,8 +1,8 @@
 package org.effectivejava.topics.implementations;
 
 import com.google.auto.service.AutoService;
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -14,15 +14,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @AutoService(Item.class)
 public class UseOverloadingJudiciously implements Item {
 
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_8;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_8;
     }
 
     @Override

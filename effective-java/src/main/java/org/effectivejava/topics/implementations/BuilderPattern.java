@@ -1,8 +1,8 @@
 package org.effectivejava.topics.implementations;
 
 import com.google.auto.service.AutoService;
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 import org.effectivejava.topics.pojos.Calzone;
 import org.effectivejava.topics.pojos.NyPizza;
 import org.effectivejava.topics.pojos.Pizza;
@@ -14,8 +14,8 @@ import static org.effectivejava.topics.pojos.NyPizza.Size.SMALL;
 @AutoService(Item.class)
 public class BuilderPattern implements Item {
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_2;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_2;
     }
 
     @Override

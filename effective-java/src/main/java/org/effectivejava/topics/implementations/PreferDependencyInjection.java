@@ -1,8 +1,8 @@
 package org.effectivejava.topics.implementations;
 
 import com.google.auto.service.AutoService;
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,8 +12,8 @@ import java.util.function.Supplier;
 @AutoService(Item.class)
 public class PreferDependencyInjection implements Item {
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_2;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_2;
     }
 
     @Override

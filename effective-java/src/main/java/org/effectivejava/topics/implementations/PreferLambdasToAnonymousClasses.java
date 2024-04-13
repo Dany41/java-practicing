@@ -2,8 +2,8 @@ package org.effectivejava.topics.implementations;
 
 import com.google.auto.service.AutoService;
 import com.google.common.collect.Lists;
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,8 +13,8 @@ import java.util.function.DoubleBinaryOperator;
 @AutoService(Item.class)
 public class PreferLambdasToAnonymousClasses implements Item {
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_7;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_7;
     }
 
     @Override
@@ -50,6 +50,7 @@ public class PreferLambdasToAnonymousClasses implements Item {
         List<String> words = Lists.newArrayList("a", "b", "c", "aa");
         // Anonymous class instance as a function object - obsolete!
         Collections.sort(words, new Comparator<String>() {
+            @Override
             public int compare(String s1, String s2) {
                 return Integer.compare(s1.length(), s2.length());
             }

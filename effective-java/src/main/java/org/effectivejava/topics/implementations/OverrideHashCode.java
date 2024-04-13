@@ -2,20 +2,19 @@ package org.effectivejava.topics.implementations;
 
 import com.google.auto.service.AutoService;
 import lombok.SneakyThrows;
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @AutoService(Item.class)
 public class OverrideHashCode implements Item {
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_3;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_3;
     }
 
     @Override

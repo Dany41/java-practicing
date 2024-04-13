@@ -1,6 +1,8 @@
 package org.effectivejava.topics.helpers;
 
-public enum Chapter {
+import org.abstractions.Chapter;
+
+public enum EjChapter implements Chapter {
     CHAPTER_2("Creating and Destroying Objects"),
     CHAPTER_3(""),
     CHAPTER_4(""),
@@ -15,7 +17,7 @@ public enum Chapter {
 
     private String fullName;
 
-    Chapter(String fullName) {
+    EjChapter(String fullName) {
         this.fullName = fullName;
     }
 

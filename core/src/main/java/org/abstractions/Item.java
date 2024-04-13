@@ -1,6 +1,4 @@
-package org.effectivejava.topics.abstractions;
-
-import org.effectivejava.topics.helpers.Chapter;
+package org.abstractions;
 
 import java.util.Collections;
 import java.util.List;

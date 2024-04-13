@@ -1,7 +1,7 @@
 package org.effectivejava.topics.implementations;
 
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 
 import java.util.*;
 import java.util.stream.Stream;
@@ -9,8 +9,8 @@ import java.util.stream.StreamSupport;
 
 public class PreferCollectionToStreamAsAReturnType implements Item {
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_7;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_7;
     }
 
     @Override

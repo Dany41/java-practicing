@@ -3,8 +3,8 @@ package org.effectivejava.topics.implementations;
 import com.google.auto.service.AutoService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 @AutoService(Item.class)
 public class OverrideEquals implements Item {
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_3;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_3;
     }
 
     @Override

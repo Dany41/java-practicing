@@ -1,16 +1,19 @@
 package org.effectivejava.topics.implementations;
 
 import com.google.auto.service.AutoService;
-import org.effectivejava.topics.abstractions.Item;
-import org.effectivejava.topics.helpers.Chapter;
+import org.abstractions.Item;
+import org.effectivejava.topics.helpers.EjChapter;
 
+import java.math.BigInteger;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 @AutoService(Item.class)
 public class PreferForEachLoopsToTraditionalForLoops implements Item {
     @Override
-    public Chapter getChapter() {
-        return Chapter.CHAPTER_9;
+    public EjChapter getChapter() {
+        return EjChapter.CHAPTER_9;
     }
 
     @Override
@@ -34,9 +37,33 @@ public class PreferForEachLoopsToTraditionalForLoops implements Item {
         );
     }
 
+    public void remove(List<Character> chars) {
+        char end = 'z';
+        Predicate<Character> predicate = (var var) -> {
+            char start = 'a'; return start <= var && var <= end; };
+        // INSERT LINE HERE
+//        end = '2';
+    }
+
     @Override
     public void runExamples() {
+        List<Integer> lists = List.of(1, 2, 3);
+        for (Integer i :
+                lists) {
+            
+        }
 
+        BigInteger length = BigInteger.valueOf(3);
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(BigInteger.valueOf(3)) < 0; i = i.add(BigInteger.ONE)) {
+            if (i.mod(BigInteger.TWO).equals(BigInteger.ZERO)) {
+                Supplier<BigInteger> supplier = () -> length; // A
+                System.out.println(supplier.get()); // B
+            } else {
+                BigInteger j = i;
+                Supplier<BigInteger> supplier = () -> j; // C
+                System.out.println(supplier.get()); // D
+            }
+        }
     }
 
     @Override
