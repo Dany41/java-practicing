@@ -20,7 +20,13 @@ public class UnitTests implements Item {
     @Override
     public List<String> getBulletPoints() {
         return List.of(
-
+            "unit tests: tests your code; focused on single classes; run in isolation; control context; fast",
+            "unit tests are developer's responsibility",
+            "they can help to improve your design",
+            "state testing - is about testing 'workers' or classes which have no collaborators, also called - state " +
+                    "verification",
+            "interactions testing - is about testing 'managers' or classes which have collaborators, also called - " +
+                    "behaviour verification"
         );
     }
 
