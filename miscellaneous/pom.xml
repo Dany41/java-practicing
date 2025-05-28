@@ -9,7 +9,6 @@
 
     <properties>
         <java.version>21</java.version>
-        <argLine>-Dnet.bytebuddy.experimental=true</argLine>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
     </properties>
@@ -76,7 +75,6 @@
                 <configuration>
                     <source>21</source>
                     <target>21</target>
-                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
